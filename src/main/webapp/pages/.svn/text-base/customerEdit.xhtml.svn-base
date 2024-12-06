@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<ui:composition template="/pages/template/template.xhtml">
+<ui:define name="body">
+  
+	<h:form>
+		<h:panelGrid columns="3" title="Customer">
+			<f:facet name="header">
+            	<h:outputText value="Customer"/>
+         	</f:facet>
+			<h:outputText value="Name: " />
+			<h:inputText value="#{customer.name}" id="name" required="true"/>
+			<h:message for="name" />
+			
+			<h:outputText value="Phone: " />
+			<h:inputText value="#{customer.phone}" id="phone" required="true"/>
+			<h:message for="phone" />
+			
+			<h:outputText value="Address: " />
+			<h:inputText value="#{customer.adresse}" id="adresse" required="true"/>
+			<h:message for="adresse" />
+			
+			<h:outputText value="TaxId: " />
+			<h:inputText value="#{customer.taxId}" id="taxId" required="true">
+				<f:validateLongRange minimum="0" maximum="100"/>
+			</h:inputText>
+			<h:message for="taxId" />
+			
+			<h:outputText value="City: " />
+			<h:inputText value="#{customer.city}" id="city" required="true"/>
+			<h:message for="city" />
+			
+			<h:outputText value="State: "  required="true"/>
+			<h:inputText value="#{customer.state}" id="state" required="true"/>
+			<h:message for="state" />
+			
+			<h:outputText value="Zip: " />
+			<h:inputText value="#{customer.zip}" id="zip" required="true">
+				<f:validateLongRange minimum="0" maximum="9999"/>
+			</h:inputText>
+			<h:message for="zip" />
+			
+			<f:facet name="footer"> 
+				<h:commandButton action="#{customer.save}"  value="save"  />
+			</f:facet>
+		</h:panelGrid>
+
+	</h:form>
+
+</ui:define>	
+</ui:composition>
+
+</html>

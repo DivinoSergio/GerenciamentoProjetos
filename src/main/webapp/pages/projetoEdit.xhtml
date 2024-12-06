@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/pages/template/template.xhtml">
+	<ui:define name="body">
+
+		<h:form id="editForm">
+			<p:panelGrid columns="2" title="Editar Projeto" cellpadding="5">
+				<f:facet name="header">
+					<h:outputText value="Editar Projeto" />
+				</f:facet>
+
+				<h:outputText value="ID" />
+				<h:outputText disabled="false" value="#{editProjetoController.projeto1.id}" id="ID"/>
+				
+				<p:outputLabel value="Título" />
+				<p:inputText value="#{editProjetoController.projeto1.titulo}" required="true" />
+				
+				<p:outputLabel value="Descrição" />
+				<p:inputText value="#{editProjetoController.projeto1.descricao}" required="true" />
+				
+				<p:outputLabel value="Data Inicio" />
+				<p:datePicker value="#{editProjetoController.projeto1.dataInicio}" required="true" />
+				
+				<f:facet name="footer">
+					<p:commandButton value="Salvar" actionListener="#{editProjetoController.edit(ditProjetoController.projeto1)}" update="editForm" 
+						styleClass="ui-button-raised ui-button-success" icon="pi pi-save"/>
+						
+					<p:button style="width: 10; margin: 10px" value="Voltar"
+						href="./projetoList.xhtml"
+						styleClass="ui-button-raised ui-button-danger" />
+				</f:facet>
+			</p:panelGrid>
+
+		</h:form>
+
+	</ui:define>
+</ui:composition>
+
+</html>

@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<ui:composition template="/pages/template/template.xhtml">
+<ui:define name="body">
+  
+	<h:form>
+		<h:panelGrid columns="3" title="Projeto">
+			<f:facet name="header">
+            	<h:outputText value="Projeto"/>
+         	</f:facet>
+			<h:outputText value="ID: " />
+			<h:inputText value="#{projetoController.projeto.id}" id="ID" required="true"/>
+			<h:message for="ID" />
+			
+			<h:outputText value="Título: " />
+			<h:inputText value="#{projetoController.projeto.titulo}" id="titulo" required="true"/>
+			<h:message for="titulo" />
+			
+			<h:outputText value="Descrição: " />
+			<h:inputText value="#{projetoController.projeto.descricao}" id="descricao" required="true"/>
+			<h:message for="descricao" />
+			
+			<h:outputText value="TaxId: " />
+			<h:inputText value="#{projetoController.projeto.dataInicio}" id="dataInicio" required="true">
+				<f:convertDateTime pattern="dd/MM/yyyy" type="both" dateStyle="short"/>
+			</h:inputText>
+			<h:message for="dataInicio" />
+				
+			<f:facet name="footer"> 
+				<h:commandButton action="#{projetoController.cadastrarProjetos}" value="Cadastrar" 
+					href="../Interface/InterfaceGeral.xhtml"
+					onclick="alert('Projeto Cadastrado com Sucesso!')"
+					styleClass="ui-button-raised ui-button-success" />
+			</f:facet>
+		</h:panelGrid>
+
+	</h:form>
+
+</ui:define>	
+</ui:composition>
+
+</html>
