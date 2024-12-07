@@ -14,7 +14,7 @@
 		<p:dataTable id="tableList" value="#{tarefaController.todosTarefas}" var="dataTableItem" rowIndexVar="rowIndex"
 			rows="5" paginator="true" paginatorPosition="bottom" sortBy="#{dataTableItem.projeto.titulo}">
 
-			<p:headerRow field="projeto.titulo" expandable="true">
+			<p:headerRow field="projeto.titulo" expandable="true" styleClass="custom-header">
                 <p:column colspan="6">
                     <div class="inline-flex align-items-center" style="vertical-align: middle">
                         <h:outputText styleClass="ml-2" value="Projeto: #{dataTableItem.projeto.titulo}"/>
@@ -22,7 +22,7 @@
                 </p:column>
             </p:headerRow>
             
-			<p:column headerText="ID">
+			<p:column headerText="ID" style="height: 10px;">
 				<h:outputText value="#{dataTableItem.id}" />
 			</p:column>
 			<p:column headerText="Título">

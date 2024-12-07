@@ -36,7 +36,7 @@
 		<managed-bean-name>createTarefaController1</managed-bean-name>
 		<managed-bean-class>com.exemplo.gerenciamento.controller.CreateTarefaController</managed-bean-class>
 		<managed-bean-scope>request</managed-bean-scope> 
-	</managed-bean>	
+	</managed-bean>
 
 	<managed-bean>
         <managed-bean-name>taskController</managed-bean-name>

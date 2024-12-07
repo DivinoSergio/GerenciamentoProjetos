@@ -24,13 +24,12 @@ public class ProjetoRepository {
         }
 		return uniqueInstance;
 	}
-	
-	EntityManagerFactory sf = Persistence.createEntityManagerFactory("GerenciamentoProjetos");
-	EntityManager em = sf.createEntityManager();
 
 	private List<Projeto> todosProjetos = new ArrayList<Projeto>();
 
-	public List<Projeto> getTodosProjetos() {
+	public List<Projeto> getTodosProjetos() {		
+		EntityManagerFactory sf = Persistence.createEntityManagerFactory("GerenciamentoProjetos");
+		EntityManager em = sf.createEntityManager();
 		return em.createQuery("From Projeto").getResultList();
 	}
 
@@ -49,7 +48,8 @@ public class ProjetoRepository {
 	}
 	
 	public List<Projeto> buscarProjetos(String query) {
-        EntityManager em = sf.createEntityManager();
+		EntityManagerFactory sf = Persistence.createEntityManagerFactory("GerenciamentoProjetos");
+		EntityManager em = sf.createEntityManager();
         return em.createQuery("SELECT p FROM Projeto p WHERE LOWER(p.titulo) LIKE :query", Projeto.class)
                  .setParameter("query", "%" + query.toLowerCase() + "%")
                  .getResultList();
@@ -57,7 +57,8 @@ public class ProjetoRepository {
 	
 	public Projeto buscarProjetoPorId(Long id) {
 		// Configuração do EntityManager
-        EntityManager em = sf.createEntityManager();
+		EntityManagerFactory sf = Persistence.createEntityManagerFactory("GerenciamentoProjetos");
+		EntityManager em = sf.createEntityManager();
 
         Projeto projeto = null;
 
@@ -82,6 +83,7 @@ public class ProjetoRepository {
 
 	public void saveProjetos(Projeto projeto) {
 		System.out.println("[Entrou] saveProjetos" );
+		EntityManagerFactory sf = Persistence.createEntityManagerFactory("GerenciamentoProjetos");
 		EntityManager em = sf.createEntityManager();
         
         try {
@@ -103,6 +105,7 @@ public class ProjetoRepository {
 
 	public void editProjetos(Projeto projeto) {
 		System.out.println("[Entrou] editProjetos" );
+		EntityManagerFactory sf = Persistence.createEntityManagerFactory("GerenciamentoProjetos");
 		EntityManager em = sf.createEntityManager();
         
         try {
@@ -125,6 +128,7 @@ public class ProjetoRepository {
 	public void removeProjetos(Long idProjeto) {
 		System.out.println("[Entrou] removeProjetos, ID: " + idProjeto);
 		
+		EntityManagerFactory sf = Persistence.createEntityManagerFactory("GerenciamentoProjetos");
 		EntityManager em = sf.createEntityManager();
         
         try {
@@ -149,23 +153,4 @@ public class ProjetoRepository {
 		System.out.println("Projeto excluido");
 	}
 	
-	// EXCLUIR
-	public void excluiProjetoUnico() {
-		System.out.println("[Entrou]\n");
-		em.getTransaction().begin();
-		Query p = em.createQuery("From Projeto");
-		@SuppressWarnings("unchecked")
-		List<Projeto> projetos = p.getResultList();
-
-		for (Projeto c : projetos) {
-			if (c.getId() == c.getId()) {
-				// Excluir Projeto
-				System.out.println("Projeto Removido\n");
-				em.remove(projeto.getId());
-				em.getTransaction().commit();
-				em.close();
-				break;
-			}
-		}
-	}
 }

@@ -25,12 +25,11 @@ public class TarefaRepository {
 		return uniqueInstance;
 	}
 	
-	EntityManagerFactory sf = Persistence.createEntityManagerFactory("GerenciamentoProjetos");
-	EntityManager em = sf.createEntityManager();
-
 	private List<Tarefa> todosTarefas = new ArrayList<Tarefa>();
 
 	public List<Tarefa> getTodosTarefas() {
+		EntityManagerFactory sf = Persistence.createEntityManagerFactory("GerenciamentoProjetos");
+		EntityManager em = sf.createEntityManager();
 		return em.createQuery("From Tarefa").getResultList();
 	}
 
@@ -50,8 +49,8 @@ public class TarefaRepository {
 	
 	public Tarefa buscarTarefaPorId(Long id) {
 		// Configuração do EntityManager
-        EntityManagerFactory sf = Persistence.createEntityManagerFactory("GerenciamentoProjetos");
-        EntityManager em = sf.createEntityManager();
+		EntityManagerFactory sf = Persistence.createEntityManagerFactory("GerenciamentoProjetos");
+		EntityManager em = sf.createEntityManager();
 
         Tarefa tarefa = null;
 
@@ -77,7 +76,7 @@ public class TarefaRepository {
 	public void saveTarefas(Tarefa tarefa) {
 		System.out.println("[Entrou] saveTarefas" );
 		EntityManagerFactory sf = Persistence.createEntityManagerFactory("GerenciamentoProjetos");
-        EntityManager em = sf.createEntityManager();
+		EntityManager em = sf.createEntityManager();
         
         try {
 			em.getTransaction().begin();
@@ -99,7 +98,7 @@ public class TarefaRepository {
 	public void editTarefas(Tarefa tarefa) {
 		System.out.println("[Entrou] editTarefas" );
 		EntityManagerFactory sf = Persistence.createEntityManagerFactory("GerenciamentoProjetos");
-        EntityManager em = sf.createEntityManager();
+		EntityManager em = sf.createEntityManager();
         
         try {
 			em.getTransaction().begin();
@@ -120,9 +119,8 @@ public class TarefaRepository {
 	
 	public void removeTarefas(Long idTarefa) {
 		System.out.println("[Entrou] removeTarefas, ID: " + idTarefa);
-		
-		EntityManagerFactory sf = Persistence.createEntityManagerFactory("GerenciamentoTarefas");
-        EntityManager em = sf.createEntityManager();
+		EntityManagerFactory sf = Persistence.createEntityManagerFactory("GerenciamentoProjetos");
+		EntityManager em = sf.createEntityManager();
         
         try {
 			em.getTransaction().begin();
@@ -144,25 +142,5 @@ public class TarefaRepository {
             sf.close();
         }
 		System.out.println("Tarefa excluido");
-	}
-	
-	// EXCLUIR
-	public void excluiTarefaUnico() {
-		System.out.println("[Entrou]\n");
-		em.getTransaction().begin();
-		Query p = em.createQuery("From Tarefa");
-		@SuppressWarnings("unchecked")
-		List<Tarefa> tarefas = p.getResultList();
-
-		for (Tarefa c : tarefas) {
-			if (c.getId() == c.getId()) {
-				// Excluir Tarefa
-				System.out.println("Tarefa Removido\n");
-				em.remove(tarefa.getId());
-				em.getTransaction().commit();
-				em.close();
-				break;
-			}
-		}
 	}
 }
