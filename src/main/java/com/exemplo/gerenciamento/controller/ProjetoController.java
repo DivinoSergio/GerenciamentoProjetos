@@ -2,12 +2,14 @@ package com.exemplo.gerenciamento.controller;
 
 import java.util.List;
 
+import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 
 import com.exemplo.gerenciamento.model.Projeto;
 import com.exemplo.gerenciamento.repository.ProjetoRepository;
 
+@ManagedBean
 @ViewScoped
 public class ProjetoController {
 	
@@ -51,11 +53,11 @@ public class ProjetoController {
         return "/pages/projetoEdit?faces-redirect=true";
     }
 
-    public void removeProjetoById(int idProjeto ) {
-    	System.out.println("Valor " + idProjeto);
+    public void removeProjetoById(int id) {
+    	System.out.println("Valor " + id);
     	
-    	ProjetoRepository.getInstance().removeProjetos(Long.valueOf(idProjeto));
-
+    	ProjetoRepository.getInstance().removeProjetos(Long.valueOf(id));
+    	
         // return "/pages/projetoEdit?faces-redirect=true";
     }
 }

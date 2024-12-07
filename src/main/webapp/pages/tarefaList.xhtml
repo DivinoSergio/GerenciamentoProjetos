@@ -11,9 +11,17 @@
 	<h:form id="formList">
 		<p:commandButton value="Novo Cadastro" action="tarefaSave?faces-redirect=true" styleClass="ui-button-raised ui-button-success" />
 
-		<p:dataTable id="tableList" value="#{tarefaController1.todosTarefas}" var="dataTableItem" rowIndexVar="rowIndex"
-			rows="5" paginator="true" paginatorPosition="bottom" >
+		<p:dataTable id="tableList" value="#{tarefaController.todosTarefas}" var="dataTableItem" rowIndexVar="rowIndex"
+			rows="5" paginator="true" paginatorPosition="bottom" sortBy="#{dataTableItem.projeto.titulo}">
 
+			<p:headerRow field="projeto.titulo" expandable="true">
+                <p:column colspan="6">
+                    <div class="inline-flex align-items-center" style="vertical-align: middle">
+                        <h:outputText styleClass="ml-2" value="Projeto: #{dataTableItem.projeto.titulo}"/>
+                    </div>
+                </p:column>
+            </p:headerRow>
+            
 			<p:column headerText="ID">
 				<h:outputText value="#{dataTableItem.id}" />
 			</p:column>
@@ -23,14 +31,18 @@
 			<p:column headerText="Descrição">
 				<h:outputText value="#{dataTableItem.descricao}" />
 			</p:column>
-			<p:column headerText="Data Inicio">
-				<h:outputText value="#{dataTableItem.dataInicio}" />
+			<p:column headerText="Prioridade">
+				<h:outputText value="#{dataTableItem.prioridade}" />
 			</p:column>
+			<p:column headerText="Estimativa">
+				<h:outputText value="#{dataTableItem.estimativa}" />
+			</p:column>
+			
 			<p:column headerText="Ação">
-				<p:commandButton action="#{tarefaController1.loadTarefaById(dataTableItem.id)}"
+				<p:commandButton action="#{tarefaController.loadTarefaById(dataTableItem.id)}"
 					icon="pi pi-check" styleClass="rounded-button ui-button-flat" update="formList"/>
 					
-				<p:commandButton action="#{tarefaController1.removeTarefaById(dataTableItem.id)}"
+				<p:commandButton action="#{tarefaController.removeTarefaById(dataTableItem.id)}"
 					icon="pi pi-times" styleClass="rounded-button ui-button-danger ui-button-flat" update="formList"/>
 				
 			</p:column>

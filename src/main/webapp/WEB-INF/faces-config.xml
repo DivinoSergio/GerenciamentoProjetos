@@ -4,8 +4,7 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_3.xsd"
 	version="2.3">
 	
-	<!-- Retirar, obsoleto. -->
-	<managed-bean>
+ 	<managed-bean>
 		<managed-bean-name>projetoController</managed-bean-name>
 		<managed-bean-class>com.exemplo.gerenciamento.controller.ProjetoController</managed-bean-class>
 		<managed-bean-scope>request</managed-bean-scope>
@@ -24,8 +23,26 @@
 	<managed-bean>
 		<managed-bean-name>tarefaController1</managed-bean-name>
 		<managed-bean-class>com.exemplo.gerenciamento.controller.TarefasController</managed-bean-class>
-		<managed-bean-scope>session</managed-bean-scope>
+		<managed-bean-scope>session</managed-bean-scope> 
 	</managed-bean>
+	
+	<managed-bean>
+		<managed-bean-name>createTarefaController</managed-bean-name>
+		<managed-bean-class>com.exemplo.gerenciamento.controller.CreateTarefaController</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope> 
+	</managed-bean>	
+	
+	<managed-bean>
+		<managed-bean-name>createTarefaController1</managed-bean-name>
+		<managed-bean-class>com.exemplo.gerenciamento.controller.CreateTarefaController</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope> 
+	</managed-bean>	
+
+	<managed-bean>
+        <managed-bean-name>taskController</managed-bean-name>
+        <managed-bean-class>com.exemplo.gerenciamento.controller.TaskController</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
 
 	<navigation-rule>
 	    <from-view-id>/projetoList.xhtml</from-view-id>

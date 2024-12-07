@@ -30,22 +30,30 @@
 				<p:commandButton action="#{projetoController1.loadProjetoById(dataTableItem.id)}"
 					icon="pi pi-check" styleClass="rounded-button ui-button-flat" update="formList"/>
 					
-				<p:commandButton action="#{projetoController1.removeProjetoById(dataTableItem.id)}"
-					icon="pi pi-times" styleClass="rounded-button ui-button-danger ui-button-flat" update="formList"/>
+				<p:commandButton action="#{projetoController1.loadProjetoById(projeto.id)}"
+					icon="pi pi-pencil" tyleClass="edit-button rounded-button ui-button-success" update="formList"/>
 				
-				<p:commandButton  onclick="PF('cd').show()" icon="pi pi-times" styleClass="rounded-button ui-button-danger ui-button-flat" 
-					 process="@this" update="formList"/>
-					
-				<p:confirmDialog id="confirmDialogId" header="Excluir Projeto" message="Gostaria de excluir este registro #{dataTableItem.id} de Projeto?" 
-					severity="warn" widgetVar="cd" >
-			        <p:commandButton value="Sim" action="#{projetoController1.removeProjetoById(dataTableItem.id)}" update="formList" 
-			        	oncomplete="PF('cd').hide()"/>
-			        <p:commandButton value="Não" onclick="PF('cd').hide();" type="button" />
-			    </p:confirmDialog>	
+				<p:commandButton class="ui-button-warning rounded-button" icon="pi pi-trash"
+					process="@this" oncomplete="PF('confirmDialogId').show()">
+					<f:setPropertyActionListener value="#{projeto}" target="#{projetoController1.projeto1}" />
+                </p:commandButton>
+                
 			</p:column>
 		</p:dataTable>
-	
+		
 	</h:form>
+
+	<h:form id="dialogs">
+		<p:confirmDialog widgetVar="confirmDialogId" showEffect="fade" header="Excluir Projeto" severity="warn" 
+					message="Gostaria de excluir este registro de Projeto?">
+					
+	        <p:commandButton value="Sim" actionListener="#{projetoController1.removeProjetoById}" 
+	        	process="@this" update=":formList" oncomplete="PF('confirmDialogId').hide()"/>
+	        	
+	        <p:commandButton value="Não" onclick="PF('confirmDialogId').hide();" type="button"
+	        	styleClass="ui-button-secondary" icon="pi pi-times"/>
+	    </p:confirmDialog>	
+    </h:form>
 	</ui:define>
 </ui:composition>
 

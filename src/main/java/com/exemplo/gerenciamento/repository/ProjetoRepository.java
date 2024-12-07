@@ -48,9 +48,15 @@ public class ProjetoRepository {
 		this.projeto = projeto;
 	}
 	
+	public List<Projeto> buscarProjetos(String query) {
+        EntityManager em = sf.createEntityManager();
+        return em.createQuery("SELECT p FROM Projeto p WHERE LOWER(p.titulo) LIKE :query", Projeto.class)
+                 .setParameter("query", "%" + query.toLowerCase() + "%")
+                 .getResultList();
+    }
+	
 	public Projeto buscarProjetoPorId(Long id) {
 		// Configuração do EntityManager
-        EntityManagerFactory sf = Persistence.createEntityManagerFactory("GerenciamentoProjetos");
         EntityManager em = sf.createEntityManager();
 
         Projeto projeto = null;
@@ -76,8 +82,7 @@ public class ProjetoRepository {
 
 	public void saveProjetos(Projeto projeto) {
 		System.out.println("[Entrou] saveProjetos" );
-		EntityManagerFactory sf = Persistence.createEntityManagerFactory("GerenciamentoProjetos");
-        EntityManager em = sf.createEntityManager();
+		EntityManager em = sf.createEntityManager();
         
         try {
 			em.getTransaction().begin();
@@ -98,8 +103,7 @@ public class ProjetoRepository {
 
 	public void editProjetos(Projeto projeto) {
 		System.out.println("[Entrou] editProjetos" );
-		EntityManagerFactory sf = Persistence.createEntityManagerFactory("GerenciamentoProjetos");
-        EntityManager em = sf.createEntityManager();
+		EntityManager em = sf.createEntityManager();
         
         try {
 			em.getTransaction().begin();
@@ -121,8 +125,7 @@ public class ProjetoRepository {
 	public void removeProjetos(Long idProjeto) {
 		System.out.println("[Entrou] removeProjetos, ID: " + idProjeto);
 		
-		EntityManagerFactory sf = Persistence.createEntityManagerFactory("GerenciamentoProjetos");
-        EntityManager em = sf.createEntityManager();
+		EntityManager em = sf.createEntityManager();
         
         try {
 			em.getTransaction().begin();

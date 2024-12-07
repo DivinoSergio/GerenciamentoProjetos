@@ -22,7 +22,8 @@ public class EditProjetoController implements Serializable {
 	private Projeto projeto;	
 	private Projeto projeto1;
 	
-	public EditProjetoController() {
+	@PostConstruct
+	public void init() {
 		System.out.println("Entrou inicializando o EditProjetoController.");
 		// Recuperar objeto do Flash Scope
 		projeto1 = (Projeto) FacesContext.getCurrentInstance()

@@ -1,7 +1,5 @@
 package com.exemplo.gerenciamento.model;
 
-import java.sql.Timestamp;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,7 +10,9 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class Tarefa {
+	
 	@Id
+    @Column(name = "id_tarefa")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
@@ -26,7 +26,7 @@ public class Tarefa {
 	private Integer prioridade;
 
 	@Column(name = "estimativa", nullable = false)
-	private Timestamp estimativa;
+	private Integer estimativa;
 
 	@ManyToOne
 	@JoinColumn(name = "id_projeto")
@@ -64,11 +64,11 @@ public class Tarefa {
 		this.prioridade = prioridade;
 	}
 
-	public Timestamp getEstimativa() {
+	public Integer getEstimativa() {
 		return estimativa;
 	}
 
-	public void setEstimativa(Timestamp estimativa) {
+	public void setEstimativa(Integer estimativa) {
 		this.estimativa = estimativa;
 	}
 
