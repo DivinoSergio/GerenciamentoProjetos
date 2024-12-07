@@ -1,17 +1,17 @@
 Índice de Conteúdo
 ==================
-   * [Aplicativo web CRUD com design responsivo](#crud-web-application-with-responsive-design)
-      * [Frameworks e ferramentas usadas](#frameworks-and-tools-used)
-      * [Linguagem](#language)
+   * [Aplicativo web CRUD com design responsivo](#aplicativo-web-crud-com-design-responsivo)
+      * [Frameworks e ferramentas usadas](#frameworks-e-ferramentas-usadas)
+      * [Linguagem](#linguagem)
       * [Inversão de controle / Injeção de dependência / Middleware](#inversion-of-control--dependency-injection--middleware)
-      * [Persistência](#persistence)
+      * [Persistência](#persistencia)
       * [Apresentação / Interface do usuário](#presentation--user-interface)
       * [Servidor de aplicativos (contêiner de servlet, na verdade)](#application-server-servlet-container-actually)
       * [Ferramenta de gerenciamento e construção de dependências](#dependency-management-and-build-tool)
       * [IDE](#ide)
-   * [Objetivo](#purpose)
-   * [Como executar este projeto](#how-to-run-this-project)
-   * [Console de banco de dados MySQL](#embedded-h2-database-console)
+   * [Objetivo](#objetivo)
+   * [Banco de dados MySQL](#banco-de-dados-mysQL)
+   * [Como executar este projeto](#como-executar-este-projeto)
 
 # Aplicativo web CRUD com design responsivo
 Este projeto é uma aplicação web CRUD simples com design responsivo, usando Java, Spring Framework, JPA, JSF, PrimeFaces e outras tecnologias.
