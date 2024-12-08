@@ -19,7 +19,7 @@ public class CreateTarefaController implements Serializable {
 	private Tarefa tarefa;
 //	private Projeto projeto;
 	private Projeto projetoSelecionado;
-	private Long projetoId;
+	private Integer projetoId;
 	private String prioridade;
 	
 	public CreateTarefaController() {
@@ -59,11 +59,11 @@ public class CreateTarefaController implements Serializable {
 		this.projetoSelecionado = projetoSelecionado;
 	}
 
-	public Long getProjetoId() {
+	public Integer getProjetoId() {
 		return projetoId;
 	}
 
-	public void setProjetoId(Long projetoId) {
+	public void setProjetoId(Integer projetoId) {
 		this.projetoId = projetoId;
 	}
 

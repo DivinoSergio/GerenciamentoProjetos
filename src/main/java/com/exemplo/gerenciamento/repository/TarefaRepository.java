@@ -28,9 +28,10 @@ public class TarefaRepository {
 	private List<Tarefa> todosTarefas = new ArrayList<Tarefa>();
 
 	public List<Tarefa> getTodosTarefas() {
-		EntityManagerFactory sf = Persistence.createEntityManagerFactory("GerenciamentoProjetos");
+		EntityManagerFactory sf = Persistence.createEntityManagerFactory("GP_PU");
 		EntityManager em = sf.createEntityManager();
-		return em.createQuery("From Tarefa").getResultList();
+		String hql = "SELECT t FROM Tarefa t ORDER BY t.projeto.id, t.id";
+		return em.createQuery(hql).getResultList();
 	}
 
 	public void setTodosTarefas(List<Tarefa> todosTarefas) {
@@ -49,7 +50,7 @@ public class TarefaRepository {
 	
 	public Tarefa buscarTarefaPorId(Long id) {
 		// Configuração do EntityManager
-		EntityManagerFactory sf = Persistence.createEntityManagerFactory("GerenciamentoProjetos");
+		EntityManagerFactory sf = Persistence.createEntityManagerFactory("GP_PU");
 		EntityManager em = sf.createEntityManager();
 
         Tarefa tarefa = null;
@@ -75,7 +76,7 @@ public class TarefaRepository {
 
 	public void saveTarefas(Tarefa tarefa) {
 		System.out.println("[Entrou] saveTarefas" );
-		EntityManagerFactory sf = Persistence.createEntityManagerFactory("GerenciamentoProjetos");
+		EntityManagerFactory sf = Persistence.createEntityManagerFactory("GP_PU");
 		EntityManager em = sf.createEntityManager();
         
         try {
@@ -97,7 +98,7 @@ public class TarefaRepository {
 
 	public void editTarefas(Tarefa tarefa) {
 		System.out.println("[Entrou] editTarefas" );
-		EntityManagerFactory sf = Persistence.createEntityManagerFactory("GerenciamentoProjetos");
+		EntityManagerFactory sf = Persistence.createEntityManagerFactory("GP_PU");
 		EntityManager em = sf.createEntityManager();
         
         try {
@@ -119,7 +120,7 @@ public class TarefaRepository {
 	
 	public void removeTarefas(Long idTarefa) {
 		System.out.println("[Entrou] removeTarefas, ID: " + idTarefa);
-		EntityManagerFactory sf = Persistence.createEntityManagerFactory("GerenciamentoProjetos");
+		EntityManagerFactory sf = Persistence.createEntityManagerFactory("GP_PU");
 		EntityManager em = sf.createEntityManager();
         
         try {

@@ -30,13 +30,12 @@
 				
 				<f:facet name="footer">
 					<p:commandButton value="Salvar" actionListener="#{editProjetoController.edit(ditProjetoController.projeto1)}" 
-						update="editForm" styleClass="ui-button-raised ui-button-success" icon="pi pi-save">
+						update="editForm" styleClass="ui-button-success" icon="pi pi-save">
 						<f:setPropertyActionListener value="#{projeto}" target="#{editProjetoController.projeto1}" />
 					</p:commandButton>	
 						
 					<p:button style="width: 10; margin: 10px" value="Voltar"
-						href="./projetoList.xhtml"
-						styleClass="ui-button-raised ui-button-danger" />
+						href="./projetoList.xhtml" styleClass="ui-button-secondary" />
 				</f:facet>
 			</p:panelGrid>
 

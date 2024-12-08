@@ -3,6 +3,7 @@ package com.exemplo.gerenciamento.model;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -11,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.PreRemove;
 
 @Entity
 public class Projeto {
@@ -18,7 +20,7 @@ public class Projeto {
     @Id
     @Column(name = "id_projeto")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @Column(name = "titulo", nullable = false)
     private String titulo;
@@ -29,14 +31,14 @@ public class Projeto {
     @Column(name = "data_inicio", nullable = false) 
     private Date dataInicio;
 
-    @OneToMany(mappedBy = "projeto", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "projeto", cascade = CascadeType.PERSIST, orphanRemoval = false)
     private List<Tarefa> tarefas = new ArrayList<Tarefa>();
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -71,4 +73,11 @@ public class Projeto {
 	public void setTarefas(List<Tarefa> tarefas) {
 		this.tarefas = tarefas;
 	}
+	
+//	@PreRemove
+//    private void preRemove() {
+//        if (!tarefas.isEmpty()) {
+//            throw new IllegalStateException("Não é possível excluir o Projeto, possui Tarefas associadas.");
+//        }
+//    }
 }

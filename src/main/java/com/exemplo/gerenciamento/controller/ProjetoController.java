@@ -2,6 +2,7 @@ package com.exemplo.gerenciamento.controller;
 
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
@@ -43,7 +44,7 @@ public class ProjetoController {
 
     public String loadProjetoById(int id) {
     	System.out.println("Valor " + id);
-    	projetoId = ProjetoRepository.getInstance().buscarProjetoPorId(Long.valueOf(id));
+    	projetoId = ProjetoRepository.getInstance().findById(id);
     	System.out.println("projetoId " + this.projetoId.getTitulo());
 
         // Adicionar selectedItem ao Flash Scope para usar na próxima página
@@ -56,8 +57,23 @@ public class ProjetoController {
     public void removeProjetoById(int id) {
     	System.out.println("Valor " + id);
     	
-    	ProjetoRepository.getInstance().removeProjetos(Long.valueOf(id));
-    	
-        // return "/pages/projetoEdit?faces-redirect=true";
+    	try {
+	    	ProjetoRepository.getInstance().removeProjetos(id);
+	    	
+	    } catch (IllegalStateException e) {
+	        // Captura a exceção e adiciona uma mensagem ao contexto
+	        addMessage(FacesMessage.SEVERITY_ERROR, "Erro ao excluir o projeto", 
+	        		"Não é possível excluir o Projeto, possui Tarefas associadas.");
+	        
+	    } catch (Exception e) {
+	        // Tratamento genérico para outras exceções
+	        addMessage(FacesMessage.SEVERITY_FATAL, 
+	        		"Erro inesperado", "Por favor, tente novamente.");
+	    }
     }
+    
+    public void addMessage(FacesMessage.Severity severity, String summary, String detail) {
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(severity, summary, detail));
+    }
+    
 }

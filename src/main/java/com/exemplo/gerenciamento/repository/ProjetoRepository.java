@@ -6,16 +6,18 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import com.exemplo.gerenciamento.model.Projeto;
+import com.exemplo.gerenciamento.util.JPAUtil;
 
-public class ProjetoRepository {
+public class ProjetoRepository extends GenericRepository<Projeto> {
 
+	private static final long serialVersionUID = 6284850140553071805L;
 	private static ProjetoRepository uniqueInstance = new ProjetoRepository();
 
 	private ProjetoRepository() {
+		super(Projeto.class);
 	}
 
 	public static ProjetoRepository getInstance() {
@@ -27,8 +29,8 @@ public class ProjetoRepository {
 
 	private List<Projeto> todosProjetos = new ArrayList<Projeto>();
 
-	public List<Projeto> getTodosProjetos() {		
-		EntityManagerFactory sf = Persistence.createEntityManagerFactory("GerenciamentoProjetos");
+	public List<Projeto> getTodosProjetos() {
+		EntityManagerFactory sf = Persistence.createEntityManagerFactory("GP_PU");
 		EntityManager em = sf.createEntityManager();
 		return em.createQuery("From Projeto").getResultList();
 	}
@@ -48,16 +50,16 @@ public class ProjetoRepository {
 	}
 	
 	public List<Projeto> buscarProjetos(String query) {
-		EntityManagerFactory sf = Persistence.createEntityManagerFactory("GerenciamentoProjetos");
+		EntityManagerFactory sf = Persistence.createEntityManagerFactory("GP_PU");
 		EntityManager em = sf.createEntityManager();
         return em.createQuery("SELECT p FROM Projeto p WHERE LOWER(p.titulo) LIKE :query", Projeto.class)
                  .setParameter("query", "%" + query.toLowerCase() + "%")
                  .getResultList();
     }
 	
-	public Projeto buscarProjetoPorId(Long id) {
+	public Projeto buscarProjetoPorId(Integer id) {
 		// Configuração do EntityManager
-		EntityManagerFactory sf = Persistence.createEntityManagerFactory("GerenciamentoProjetos");
+		EntityManagerFactory sf = Persistence.createEntityManagerFactory("GP_PU");
 		EntityManager em = sf.createEntityManager();
 
         Projeto projeto = null;
@@ -83,7 +85,7 @@ public class ProjetoRepository {
 
 	public void saveProjetos(Projeto projeto) {
 		System.out.println("[Entrou] saveProjetos" );
-		EntityManagerFactory sf = Persistence.createEntityManagerFactory("GerenciamentoProjetos");
+		EntityManagerFactory sf = Persistence.createEntityManagerFactory("GP_PU");
 		EntityManager em = sf.createEntityManager();
         
         try {
@@ -105,7 +107,7 @@ public class ProjetoRepository {
 
 	public void editProjetos(Projeto projeto) {
 		System.out.println("[Entrou] editProjetos" );
-		EntityManagerFactory sf = Persistence.createEntityManagerFactory("GerenciamentoProjetos");
+		EntityManagerFactory sf = Persistence.createEntityManagerFactory("GP_PU");
 		EntityManager em = sf.createEntityManager();
         
         try {
@@ -125,11 +127,11 @@ public class ProjetoRepository {
 		System.out.println("Projeto alterado");
 	}
 	
-	public void removeProjetos(Long idProjeto) {
+	public void removeProjetos(int idProjeto)  {
 		System.out.println("[Entrou] removeProjetos, ID: " + idProjeto);
 		
-		EntityManagerFactory sf = Persistence.createEntityManagerFactory("GerenciamentoProjetos");
-		EntityManager em = sf.createEntityManager();
+		EntityManagerFactory sf = Persistence.createEntityManagerFactory("GP_PU");
+		EntityManager em = JPAUtil.getEntityManager();
         
         try {
 			em.getTransaction().begin();
@@ -142,9 +144,14 @@ public class ProjetoRepository {
 		    
 			em.getTransaction().commit();
 
+        } catch (IllegalStateException e) {
+        	em.getTransaction().rollback();
+        	throw e;
+        	
         } catch (Exception e) {
         	em.getTransaction().rollback();
-            e.printStackTrace();
+        	throw e;
+        
         } finally {
             // Fechar EntityManager
             em.close();

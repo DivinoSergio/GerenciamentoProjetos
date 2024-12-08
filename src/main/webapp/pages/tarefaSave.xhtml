@@ -1,6 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
@@ -34,8 +33,9 @@
                     <f:selectItem itemLabel="Muito Baixa" itemValue="4"/>
                 </p:selectOneMenu>
                 
-				<p:outputLabel value="Estimativa" />
-				<p:inputText value="#{createTarefaController1.tarefa.estimativa}" id="estimativa" required="true"/>
+				<p:outputLabel value="Estimativa (horas)" />
+				<p:spinner id="estimativa" value="#{createTarefaController1.tarefa.estimativa}" required="true"
+					min="1" max="500"/>
 				
 				<f:facet name="footer">
         			<p:commandButton value="Salvar" action="#{createTarefaController1.save}" update="createForm" 
