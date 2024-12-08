@@ -1,6 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
@@ -17,8 +16,8 @@
 					<h:outputText value="Editar Projeto" />
 				</f:facet>
 
-				<h:outputText value="ID" />
-				<h:outputText disabled="false" value="#{editProjetoController.projeto1.id}" id="ID"/>
+				<p:outputLabel value="ID" />
+				<p:inputText disabled="false" value="#{editProjetoController.projeto1.id}" id="ID"/>
 				
 				<p:outputLabel value="Título" />
 				<p:inputText value="#{editProjetoController.projeto1.titulo}" required="true" />

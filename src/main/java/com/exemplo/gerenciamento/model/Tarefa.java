@@ -29,7 +29,7 @@ public class Tarefa {
 	private Integer estimativa;
 
 	@ManyToOne
-	@JoinColumn(name = "id_projeto")
+	@JoinColumn(name = "id_projeto", nullable = false)
 	private Projeto projeto;
 
 	public Long getId() {
