@@ -2,66 +2,83 @@ package com.exemplo.gerenciamento.repository;
 
 import java.io.Serializable;
 import java.util.List;
-import javax.persistence.Query;
-import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.transaction.Transactional;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
-import com.exemplo.gerenciamento.util.JPAUtil;
+public abstract class GenericRepository<T, ID extends Serializable> {
+    private final Class<T> entityClass;
+    private static final EntityManagerFactory ENTITY_MANAGER_FACTORY = 
+            Persistence.createEntityManagerFactory("GP_PU");
 
-@Transactional
-public class GenericRepository<T> implements Serializable {
-
-	private static final long serialVersionUID = -7565584225038507486L;
-
-	private JPAUtil jPAUtil;
-
-    private Class<T> entityClass;
-
-    public GenericRepository(Class<T> entityClass) {
+    protected GenericRepository(Class<T> entityClass) {
         this.entityClass = entityClass;
     }
 
+    protected EntityManager getEntityManager() {
+        return ENTITY_MANAGER_FACTORY.createEntityManager();
+    }
+
+    public T findById(ID id) {
+        EntityManager em = getEntityManager();
+        try {
+            return em.find(entityClass, id);
+        } finally {
+            em.close();
+        }
+    }
+
+    public List<T> findAll(String query) {
+        EntityManager em = getEntityManager();
+        try {
+            return em.createQuery(query, entityClass).getResultList();
+        } finally {
+            em.close();
+        }
+    }
+
     public void save(T entity) {
+        EntityManager em = getEntityManager();
         try {
-            JPAUtil.getEntityManager().persist(entity);
+            em.getTransaction().begin();
+            em.persist(entity);
+            em.getTransaction().commit();
         } catch (Exception e) {
-            throw new RuntimeException(e.getMessage());
+            em.getTransaction().rollback();
+            throw e;
+        } finally {
+            em.close();
         }
     }
 
-    public void delete(Object id, Class<T> entity) {
+    public void update(T entity) {
+        EntityManager em = getEntityManager();
         try {
-            JPAUtil.getEntityManager().remove(JPAUtil.getEntityManager().getReference(entity, id));
+            em.getTransaction().begin();
+            em.merge(entity);
+            em.getTransaction().commit();
         } catch (Exception e) {
-            throw new RuntimeException(e.getMessage());
+            em.getTransaction().rollback();
+            throw e;
+        } finally {
+            em.close();
         }
     }
 
-    public T update(T entity) {
-        return JPAUtil.getEntityManager().merge(entity);
+    public void deleteById(ID id) {
+        EntityManager em = getEntityManager();
+        try {
+            em.getTransaction().begin();
+            T entity = em.find(entityClass, id);
+            if (entity != null) {
+                em.remove(entity);
+            }
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            em.getTransaction().rollback();
+            throw e;
+        } finally {
+            em.close();
+        }
     }
-
-    public T findById(int entityId) {
-        return JPAUtil.getEntityManager().find(entityClass, entityId);
-    }
-
-    public T findReferenceOnly(int entityID) {
-        return JPAUtil.getEntityManager().getReference(entityClass, entityID);
-    }
-
-    public List<T> findAll() {
-        CriteriaQuery<T> cq = (CriteriaQuery<T>) JPAUtil.getEntityManager().getCriteriaBuilder().createQuery();
-        cq.select(cq.from(entityClass));
-        return JPAUtil.getEntityManager().createQuery(cq).getResultList();
-    }
-
-    public TypedQuery<T> createNamedQuery(String query) {
-        return JPAUtil.getEntityManager().createNamedQuery(query, entityClass);
-    }
-
-    public Query createNativeQuery(String query) {
-        return JPAUtil.getEntityManager().createNativeQuery(query, entityClass);
-    }
-
 }

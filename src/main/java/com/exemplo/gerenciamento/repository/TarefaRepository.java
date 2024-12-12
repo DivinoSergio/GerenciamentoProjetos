@@ -6,18 +6,18 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import com.exemplo.gerenciamento.model.Tarefa;
 
-public class TarefaRepository {
+public class TarefaRepository extends GenericRepository<Tarefa, Integer> {
 
 	private static TarefaRepository uniqueInstance = new TarefaRepository();
 
 	private TarefaRepository() {
+		super(Tarefa.class);
 	}
-
+	
 	public static TarefaRepository getInstance() {
 		if (uniqueInstance == null) {
 			uniqueInstance = new TarefaRepository();
@@ -25,11 +25,10 @@ public class TarefaRepository {
 		return uniqueInstance;
 	}
 	
-	private List<Tarefa> todosTarefas = new ArrayList<Tarefa>();
+	private List<Tarefa> todosTarefas;
 
 	public List<Tarefa> getTodosTarefas() {
-		EntityManagerFactory sf = Persistence.createEntityManagerFactory("GP_PU");
-		EntityManager em = sf.createEntityManager();
+		EntityManager em = getEntityManager();
 		String hql = "SELECT t FROM Tarefa t ORDER BY t.projeto.id, t.id";
 		return em.createQuery(hql).getResultList();
 	}
@@ -50,8 +49,7 @@ public class TarefaRepository {
 	
 	public Tarefa buscarTarefaPorId(Long id) {
 		// Configuração do EntityManager
-		EntityManagerFactory sf = Persistence.createEntityManagerFactory("GP_PU");
-		EntityManager em = sf.createEntityManager();
+		EntityManager em = getEntityManager();
 
         Tarefa tarefa = null;
 
@@ -68,7 +66,6 @@ public class TarefaRepository {
         } finally {
             // Fechar EntityManager
             em.close();
-            sf.close();
         }
 
         return tarefa;
@@ -76,8 +73,7 @@ public class TarefaRepository {
 
 	public void saveTarefas(Tarefa tarefa) {
 		System.out.println("[Entrou] saveTarefas" );
-		EntityManagerFactory sf = Persistence.createEntityManagerFactory("GP_PU");
-		EntityManager em = sf.createEntityManager();
+		EntityManager em = getEntityManager();
         
         try {
 			em.getTransaction().begin();
@@ -91,15 +87,13 @@ public class TarefaRepository {
         } finally {
             // Fechar EntityManager
             em.close();
-            sf.close();
         }
 		System.out.println("Tarefa cadastrado");
 	}
 
 	public void editTarefas(Tarefa tarefa) {
 		System.out.println("[Entrou] editTarefas" );
-		EntityManagerFactory sf = Persistence.createEntityManagerFactory("GP_PU");
-		EntityManager em = sf.createEntityManager();
+		EntityManager em = getEntityManager();
         
         try {
 			em.getTransaction().begin();
@@ -113,15 +107,13 @@ public class TarefaRepository {
         } finally {
             // Fechar EntityManager
             em.close();
-            sf.close();
         }
 		System.out.println("Tarefa alterado");
 	}
 	
 	public void removeTarefas(Long idTarefa) {
 		System.out.println("[Entrou] removeTarefas, ID: " + idTarefa);
-		EntityManagerFactory sf = Persistence.createEntityManagerFactory("GP_PU");
-		EntityManager em = sf.createEntityManager();
+		EntityManager em = getEntityManager();
         
         try {
 			em.getTransaction().begin();
@@ -140,7 +132,6 @@ public class TarefaRepository {
         } finally {
             // Fechar EntityManager
             em.close();
-            sf.close();
         }
 		System.out.println("Tarefa excluido");
 	}

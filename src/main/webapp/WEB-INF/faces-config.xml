@@ -3,7 +3,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_3.xsd"
 	version="2.3">
-	
+    
  	<managed-bean>
 		<managed-bean-name>projetoController</managed-bean-name>
 		<managed-bean-class>com.exemplo.gerenciamento.controller.ProjetoController</managed-bean-class>
