@@ -56,6 +56,9 @@ public class EditTarefaController implements Serializable {
 
             // Executar a consulta e obter resultado
             tarefa = query.getSingleResult();
+            
+            setPrioridade(tarefa.getPrioridade().toString());
+            
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

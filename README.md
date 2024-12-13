@@ -3,14 +3,13 @@
    * [Aplicativo web CRUD com design responsivo](#aplicativo-web-crud-com-design-responsivo)
       * [Frameworks e ferramentas usadas](#frameworks-e-ferramentas-usadas)
       * [Linguagem](#linguagem)
-      * [Inversão de controle / Injeção de dependência / Middleware](#inversion-of-control--dependency-injection--middleware)
-      * [Persistência](#persistencia)
-      * [Apresentação / Interface do usuário](#presentation--user-interface)
-      * [Servidor de aplicativos (contêiner de servlet, na verdade)](#application-server-servlet-container-actually)
-      * [Ferramenta de gerenciamento e construção de dependências](#dependency-management-and-build-tool)
+      * [Persistência] (#persistência)
+      * [Apresentação / Interface do usuário] (#apresentacao--interface-do-usuario)
+      * [Servidor de aplicativos (contêiner de servlet, na verdade)] (#servidor-de-aplicacao--servlet-container-)
+      * [Ferramenta de gerenciamento e construção de dependências] (#ferramenta-de-gerenciamento-e-construcao-de-dependencias)
       * [IDE](#ide)
    * [Objetivo](#objetivo)
-   * [Banco de dados MySQL](#banco-de-dados-mysQL)
+   * [Banco de dados MySQL](#banco-de-dados-mysql)
    * [Como executar este projeto](#como-executar-este-projeto)
 
 # Aplicativo web CRUD com design responsivo
@@ -18,10 +17,7 @@ Este projeto é uma aplicação web CRUD simples com design responsivo, usando J
 
 ## Frameworks e ferramentas usadas
 ### Linguagem
-* Java 17 (JDK 1.7)
-
-### Inversão de controle / Injeção de dependência / Middleware
-* Spring Framework 4.3.x
+* Java 17 (JDK 17)
 
 ### Persistência
 * JPA 2.2
