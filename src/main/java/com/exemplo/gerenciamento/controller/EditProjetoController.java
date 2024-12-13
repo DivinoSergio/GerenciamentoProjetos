@@ -56,31 +56,4 @@ public class EditProjetoController implements Serializable {
 	public void setProjeto1(Projeto projeto1) {
 		this.projeto1 = projeto1;
 	}
-
-	public Projeto buscarProjetoPorId(Long id) {
-        // Configuração do EntityManager
-        EntityManagerFactory sf = Persistence.createEntityManagerFactory("GerenciamentoProjetos");
-        EntityManager em = sf.createEntityManager();
-
-        Projeto projeto = null;
-
-        try {
-            // Criar consulta HQL
-            String hql = "SELECT p FROM Projeto p WHERE p.id = :id";
-            TypedQuery<Projeto> query = em.createQuery(hql, Projeto.class);
-            query.setParameter("id", id);
-
-            // Executar a consulta e obter resultado
-            projeto = query.getSingleResult();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            // Fechar EntityManager
-            em.close();
-            sf.close();
-        }
-
-        return projeto;
-    }
-
 }

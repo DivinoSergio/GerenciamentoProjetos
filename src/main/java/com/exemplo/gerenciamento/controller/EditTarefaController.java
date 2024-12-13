@@ -40,35 +40,6 @@ public class EditTarefaController implements Serializable {
         // Redirecionar de volta para a página de listagem
         return "/pages/tarefaList.xhtml?faces-redirect=true";
     }
-
-	public Tarefa buscarTarefaPorId(Long id) {
-        // Configuração do EntityManager
-        EntityManagerFactory sf = Persistence.createEntityManagerFactory("GerenciamentoTarefas");
-        EntityManager em = sf.createEntityManager();
-
-        Tarefa tarefa = null;
-
-        try {
-            // Criar consulta HQL
-            String hql = "SELECT p FROM Tarefa p WHERE p.id = :id";
-            TypedQuery<Tarefa> query = em.createQuery(hql, Tarefa.class);
-            query.setParameter("id", id);
-
-            // Executar a consulta e obter resultado
-            tarefa = query.getSingleResult();
-            
-            setPrioridade(tarefa.getPrioridade().toString());
-            
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            // Fechar EntityManager
-            em.close();
-            sf.close();
-        }
-
-        return tarefa;
-    }
 	
 	public Tarefa getTarefa() {
 		return tarefa;

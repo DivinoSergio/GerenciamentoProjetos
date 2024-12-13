@@ -8,7 +8,9 @@
 <ui:composition template="/pages/template/template.xhtml">
 	<ui:define name="body">
 		<p:growl id="growl" showDetail="true" life="5000" />
-			
+	
+	<p:panel header="Projetos">
+		
 		<h:form id="formList">
 		<p:panelGrid columns="1" title="Tarefa">
 			<p:commandButton value="Novo Cadastro" action="projetoSave?faces-redirect=true" 
@@ -42,6 +44,7 @@
 			</p:dataTable>
 		</p:panelGrid>
 		</h:form>
+	</p:panel>	
 	</ui:define>
 </ui:composition>
 
