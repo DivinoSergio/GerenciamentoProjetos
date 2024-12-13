@@ -67,8 +67,8 @@ public class ProjetoController {
 	        
 	    } catch (Exception e) {
 	        // Tratamento genérico para outras exceções
-	        addMessage(FacesMessage.SEVERITY_FATAL, 
-	        		"Erro inesperado", "Por favor, tente novamente.");
+	        addMessage(FacesMessage.SEVERITY_FATAL, "Erro ao excluir o projeto", 
+	        		"Não é possível excluir o Projeto, possui Tarefas associadas.");
 	    }
     }
     
