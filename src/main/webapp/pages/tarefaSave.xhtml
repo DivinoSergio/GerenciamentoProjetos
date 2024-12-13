@@ -16,8 +16,12 @@
 				</f:facet>
 
 				<p:outputLabel value="Projeto" for="projeto" />
-	            <p:inputText value="#{createTarefaController1.projetoId}" id="projeto"/>
-	                            
+	            
+	            <p:selectOneMenu id="projeto" value="#{createTarefaController1.projetoId}" editable="true">
+                    <f:selectItem itemLabel="Selecine Um Projeto" itemValue=""/>
+                    <f:selectItems value="#{createTarefaController1.mapProjetos}"/>
+                </p:selectOneMenu>
+                                
 				<p:outputLabel value="Título" />
 				<p:inputText value="#{createTarefaController1.tarefa.titulo}" id="titulo" required="true"/>
 

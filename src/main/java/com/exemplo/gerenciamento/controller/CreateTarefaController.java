@@ -1,8 +1,12 @@
 package com.exemplo.gerenciamento.controller;
 
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
+import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
@@ -27,7 +31,20 @@ public class CreateTarefaController implements Serializable {
 		tarefa = new Tarefa();
 		tarefa.setProjeto(new Projeto());
 	}
-		
+
+	private String sProjeto;
+    private Map<String, Integer> mapProjetos = new HashMap<>();
+    
+	@PostConstruct
+    public void init() {
+		setMapProjetos(new HashMap<>());
+		List<Projeto> projetos = ProjetoRepository.getInstance().getTodosProjetos();
+		setMapProjetos(projetos.stream().collect(Collectors.toMap(
+                        Projeto::getTitulo,
+                        Projeto::getId
+                )));
+	}
+	
     public List<Projeto> completeProjeto(String query) {
         String queryLowerCase = query.toLowerCase();
         List<Projeto> projetos = ProjetoRepository.getInstance().buscarProjetos(queryLowerCase);
@@ -73,6 +90,22 @@ public class CreateTarefaController implements Serializable {
 
 	public void setPrioridade(String prioridade) {
 		this.prioridade = prioridade;
+	}
+
+	public String getsProjeto() {
+		return sProjeto;
+	}
+
+	public void setsProjeto(String sProjeto) {
+		this.sProjeto = sProjeto;
+	}
+
+	public Map<String, Integer> getMapProjetos() {
+		return mapProjetos;
+	}
+
+	public void setMapProjetos(Map<String, Integer> mapProjetos) {
+		this.mapProjetos = mapProjetos;
 	}
 
 }
