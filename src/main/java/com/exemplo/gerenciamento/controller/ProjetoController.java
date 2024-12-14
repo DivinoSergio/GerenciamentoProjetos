@@ -42,6 +42,10 @@ public class ProjetoController {
 		return ProjetoRepository.getInstance().getTodosProjetos();
 	}
 
+    public String editarProjeto() {
+        return "projetoEdit.xhtml?faces-redirect=true&id=" + projetoId.getId();
+    }
+
     public String loadProjetoById(int id) {
     	System.out.println("Valor " + id);
     	projetoId = ProjetoRepository.getInstance().findById(id);

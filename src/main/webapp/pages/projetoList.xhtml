@@ -15,9 +15,10 @@
 		<p:panelGrid columns="1" title="Tarefa">
 			<p:commandButton value="Novo Cadastro" action="projetoSave?faces-redirect=true" 
 				styleClass="ui-button-raised ui-button-success" icon="pi pi-sitemap"/>
-	
-			<p:dataTable id="tableList" value="#{projetoController1.todosProjetos}" var="dataTableItem" rowIndexVar="rowIndex"
-				rows="5" paginator="true" paginatorPosition="bottom" >
+
+			<p:dataTable id="tableList" value="#{projetoController1.todosProjetos}" var="dataTableItem" 
+				rowKey="#{dataTableItem.id}" rows="5" paginator="true" paginatorPosition="bottom" 
+				selection="#{projetoController1.projetoId}" selectionMode="single">
 	
 				<p:column headerText="ID">
 					<h:outputText value="#{dataTableItem.id}" />
@@ -34,8 +35,10 @@
 					</h:outputText>
 				</p:column>
 				<p:column headerText="Ação">
-					<p:commandButton action="#{projetoController1.loadProjetoById(dataTableItem.id)}"
-						icon="pi pi-pencil" styleClass="rounded-button ui-button-flat" update="formList"/>
+					<p:commandButton action="#{projetoController1.editarProjeto}"
+						icon="pi pi-pencil" styleClass="rounded-button ui-button-flat" update="formList">
+					<f:setPropertyActionListener value="#{dataTableItem}" target="#{projetoController1.projetoId}" />
+                </p:commandButton>
 						
 					<p:commandButton action="#{projetoController1.removeProjetoById(dataTableItem.id)}"
 						icon="pi pi-trash" styleClass="rounded-button ui-button-danger ui-button-flat" update="formList growl"/>
