@@ -4,7 +4,7 @@
       * [Frameworks e ferramentas usadas](#frameworks-e-ferramentas-usadas)
       * [Linguagem](#linguagem)
       * [Persistência](#persistência)
-      * [Apresentação / Interface do usuário](#apresentacao--interface-do-usuario)
+      * [Apresentação / Interface do usuário](#apresentação-/-interface-do-usuário)
       * [Servidor de aplicativos (contêiner de servlet, na verdade)](#servidor-de-aplicacao--servlet-container-)
       * [Ferramenta de gerenciamento e construção de dependências](#ferramenta-de-gerenciamento-e-construcao-de-dependencias)
       * [IDE](#ide)
