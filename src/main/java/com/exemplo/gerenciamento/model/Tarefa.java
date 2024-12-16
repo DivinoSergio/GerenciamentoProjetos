@@ -1,5 +1,7 @@
 package com.exemplo.gerenciamento.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,6 +29,9 @@ public class Tarefa {
 
 	@Column(name = "estimativa", nullable = false)
 	private Integer estimativa;
+
+    @Column(name = "data_inicio", nullable = false) 
+    private Date dataInicio;
 
 	@ManyToOne
 	@JoinColumn(name = "id_projeto", nullable = false)
@@ -70,6 +75,14 @@ public class Tarefa {
 
 	public void setEstimativa(Integer estimativa) {
 		this.estimativa = estimativa;
+	}
+
+	public Date getDataInicio() {
+		return dataInicio;
+	}
+
+	public void setDataInicio(Date dataInicio) {
+		this.dataInicio = dataInicio;
 	}
 
 	public Projeto getProjeto() {

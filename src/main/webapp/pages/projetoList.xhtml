@@ -12,8 +12,8 @@
 	<p:panel header="Projetos">
 		
 		<h:form id="formList">
-		<p:panelGrid columns="1" title="Tarefa">
-			<p:commandButton value="Novo Cadastro" action="projetoSave?faces-redirect=true" 
+		<p:panelGrid columns="1" title="Projeto">
+			<p:commandButton value="Nova Projeto" action="projetoSave?faces-redirect=true" 
 				styleClass="ui-button-raised ui-button-success" icon="pi pi-sitemap"/>
 
 			<p:dataTable id="tableList" value="#{projetoController1.todosProjetos}" var="dataTableItem" 

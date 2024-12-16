@@ -9,15 +9,13 @@
 	<h:head></h:head>
 
 	<body>
-	<h:form>
-		<p:panelGrid columns="1" cellpadding="0" cellspacing="2">
-	
-			<f:facet name="header">Gestão de Projetos</f:facet>
-			
-			<p:commandButton value="Projetos" action="./projetoList.xhtml" styleClass="ui-button-info" icon="pi pi-sitemap"/>
-			<p:commandButton value="Tarefas" action="./tarefaList.xhtml" styleClass="ui-button-info" icon="pi pi-chart-bar"/>			
-
-		</p:panelGrid>
-	</h:form>	
+		<h:form>
+	        <p:menu>
+	            <p:submenu label="Gestão de Projetos">
+	                <p:menuitem value="Projetos" action="./projetoList.xhtml" icon="pi pi-sitemap"/>
+	                <p:menuitem value="Tarefas" action="./tarefaList.xhtml" icon="pi pi-chart-bar"/>
+	            </p:submenu>
+	        </p:menu>
+		</h:form>	
 	</body>
 </html>

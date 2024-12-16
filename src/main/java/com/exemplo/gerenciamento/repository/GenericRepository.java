@@ -7,6 +7,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 public abstract class GenericRepository<T, ID extends Serializable> {
+	
     private final Class<T> entityClass;
     private static final EntityManagerFactory ENTITY_MANAGER_FACTORY = 
             Persistence.createEntityManagerFactory("GP_PU");

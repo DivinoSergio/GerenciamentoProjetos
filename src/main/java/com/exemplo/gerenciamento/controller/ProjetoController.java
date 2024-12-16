@@ -3,14 +3,14 @@ package com.exemplo.gerenciamento.controller;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
+import javax.inject.Named;
 
 import com.exemplo.gerenciamento.model.Projeto;
 import com.exemplo.gerenciamento.repository.ProjetoRepository;
 
-@ManagedBean
+@Named
 @ViewScoped
 public class ProjetoController {
 	

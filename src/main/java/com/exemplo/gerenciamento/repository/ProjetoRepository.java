@@ -1,6 +1,5 @@
 package com.exemplo.gerenciamento.repository;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -23,28 +22,12 @@ public class ProjetoRepository extends GenericRepository<Projeto, Integer> {
 		return uniqueInstance;
 	}
 
-	private List<Projeto> todosProjetos = new ArrayList<Projeto>();
-
 	public List<Projeto> getTodosProjetos() {
 		EntityManager em = getEntityManager();
 		return em.createQuery("From Projeto").getResultList();
 	}
-
-	public void setTodosProjetos(List<Projeto> todosProjetos) {
-		this.todosProjetos = todosProjetos;
-	}
-
-	private Projeto projeto = new Projeto();
-
-	public Projeto getProjeto() {
-		return projeto;
-	}
-
-	public void setProjeto(Projeto projeto) {
-		this.projeto = projeto;
-	}
 	
-	public List<Projeto> buscarProjetos(String query) {
+	public List<Projeto> buscarProjetosPorTitulo(String query) {
 		EntityManager em = getEntityManager();
         return em.createQuery("SELECT p FROM Projeto p WHERE LOWER(p.titulo) LIKE :query", Projeto.class)
                  .setParameter("query", "%" + query.toLowerCase() + "%")
@@ -142,6 +125,5 @@ public class ProjetoRepository extends GenericRepository<Projeto, Integer> {
             em.close();
         }
 		System.out.println("Projeto excluido");
-	}
-	
+	}	
 }

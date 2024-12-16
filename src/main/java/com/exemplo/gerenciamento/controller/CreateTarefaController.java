@@ -47,7 +47,7 @@ public class CreateTarefaController implements Serializable {
 	
     public List<Projeto> completeProjeto(String query) {
         String queryLowerCase = query.toLowerCase();
-        List<Projeto> projetos = ProjetoRepository.getInstance().buscarProjetos(queryLowerCase);
+        List<Projeto> projetos = null; //ProjetoRepository.getInstance().buscarProjetos(queryLowerCase);
         return projetos;
     }
     
