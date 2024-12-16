@@ -13,8 +13,8 @@ public class ProjetoService {
 	private final ProjetoRepository projetoRepository;
 
 	public ProjetoService() {
-	        this.projetoRepository = ProjetoRepository.getInstance();
-	    }
+        this.projetoRepository = ProjetoRepository.getInstance();
+    }
 
 	public Projeto buscarProjetoPorId(Integer id) {
 		return projetoRepository.findById(id);

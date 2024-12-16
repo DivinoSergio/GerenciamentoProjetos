@@ -27,7 +27,8 @@ Este projeto é uma aplicação web CRUD simples com design responsivo, usando J
 ### UI Interface do usuário
 * JSF 2.3.x
 * Primefaces 11.x
-* [Por que não usou Richfaces?](#por-que-não-usou-richfaces)
+	* (Porque não usou Richfades?)(#Porque-não-usou-richfades)
+
 
 ### Servidor de Aplicação (Servlet Container)
 * Tomcat 8.5.x
@@ -61,5 +62,5 @@ Criar o banco de dados:
 7. No browser "**[http://localhost:8080/GerenciamentoProjetos/](http://localhost:8080/GerenciamentoProjetos/)**". 
 
 ## Observação
-### Por que não usou Richfaces?
+### Porque não usou Richfades?
 * Porquê?
