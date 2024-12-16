@@ -4,7 +4,7 @@
       * [Frameworks e ferramentas usadas](#frameworks-e-ferramentas-usadas)
       * [Linguagem](#linguagem)
       * [Persistência](#persistência)
-      * [Apresentação / Interface do usuário](#apresentação--interface-do-usuário)
+      * [UI Interface do usuário](#ui-interface-do-usuário)
       * [Servidor de aplicativos (contêiner de servlet, na verdade)](#servidor-de-aplicacao--servlet-container-)
       * [Ferramenta de gerenciamento e construção de dependências](#ferramenta-de-gerenciamento-e-construcao-de-dependencias)
       * [IDE](#ide)
@@ -24,7 +24,7 @@ Este projeto é uma aplicação web CRUD simples com design responsivo, usando J
 * Hibernate 5.6.x
 * MySQL 8.0.x (Banco de dados relacional)
 
-### Apresentação / UI
+### UI Interface do usuário
 * JSF 2.3.x
 * Primefaces 11.x
 * [Por que não usou Richfaces?](#por-que-não-usou-richfaces)
