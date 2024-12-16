@@ -27,8 +27,9 @@ Este projeto é uma aplicação web CRUD simples com design responsivo, usando J
 ### UI Interface do usuário
 * JSF 2.3.x
 * Primefaces 11.x
-	* (Porque não usou Richfades?)(#Porque-não-usou-richfades)
-
+* <b>Porque não usou Richfaces?</b><br/>
+	RichFaces, desde 2016, foi descontinuado pela Red Hat, o que significa que não há mais suporte oficial.<br/>
+	Tornando o projeto custoso de se configurar junto as novas tecnologias.
 
 ### Servidor de Aplicação (Servlet Container)
 * Tomcat 8.5.x
