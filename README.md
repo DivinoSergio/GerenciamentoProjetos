@@ -3,10 +3,10 @@
    * [Aplicativo web CRUD com design responsivo](#aplicativo-web-crud-com-design-responsivo)
       * [Frameworks e ferramentas usadas](#frameworks-e-ferramentas-usadas)
       * [Linguagem](#linguagem)
-      * [Persistência] (#persistência)
-      * [Apresentação / Interface do usuário] (#apresentacao--interface-do-usuario)
-      * [Servidor de aplicativos (contêiner de servlet, na verdade)] (#servidor-de-aplicacao--servlet-container-)
-      * [Ferramenta de gerenciamento e construção de dependências] (#ferramenta-de-gerenciamento-e-construcao-de-dependencias)
+      * [Persistência](#persistencia)
+      * [Apresentação / Interface do usuário](#apresentacao--interface-do-usuario)
+      * [Servidor de aplicativos (contêiner de servlet, na verdade)](#servidor-de-aplicacao--servlet-container-)
+      * [Ferramenta de gerenciamento e construção de dependências](#ferramenta-de-gerenciamento-e-construcao-de-dependencias)
       * [IDE](#ide)
    * [Objetivo](#objetivo)
    * [Banco de dados MySQL](#banco-de-dados-mysql)
@@ -27,6 +27,8 @@ Este projeto é uma aplicação web CRUD simples com design responsivo, usando J
 ### Apresentação / UI
 * JSF 2.3.x
 * Primefaces 11.x
+
+* [Por que não usou Richfaces?](#por-que-não-usou-Richfaces-)
 
 ### Servidor de Aplicação (Servlet Container)
 * Tomcat 8.5.x
@@ -59,3 +61,6 @@ Criar o banco de dados:
 6. Na aba "**Server**"" do Eclipse, no servidor Tomcat, adicione o projeto e em seguida clicar em "**Debug / Start**".
 7. No browser "**[http://localhost:8080/GerenciamentoProjetos/](http://localhost:8080/GerenciamentoProjetos/)**". 
 
+## Observação
+### Por que não usou Richfaces?
+* Porquê?
