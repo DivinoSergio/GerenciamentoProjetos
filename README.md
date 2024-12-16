@@ -3,7 +3,7 @@
    * [Aplicativo web CRUD com design responsivo](#aplicativo-web-crud-com-design-responsivo)
       * [Frameworks e ferramentas usadas](#frameworks-e-ferramentas-usadas)
       * [Linguagem](#linguagem)
-      * [Persistência](#persistencia)
+      * [Persistência](#persistência)
       * [Apresentação / Interface do usuário](#apresentacao--interface-do-usuario)
       * [Servidor de aplicativos (contêiner de servlet, na verdade)](#servidor-de-aplicacao--servlet-container-)
       * [Ferramenta de gerenciamento e construção de dependências](#ferramenta-de-gerenciamento-e-construcao-de-dependencias)
@@ -27,8 +27,7 @@ Este projeto é uma aplicação web CRUD simples com design responsivo, usando J
 ### Apresentação / UI
 * JSF 2.3.x
 * Primefaces 11.x
-
-* [Por que não usou Richfaces?](#por-que-não-usou-Richfaces-)
+* [Por que não usou Richfaces?](#por-que-não-usou-richfaces)
 
 ### Servidor de Aplicação (Servlet Container)
 * Tomcat 8.5.x
