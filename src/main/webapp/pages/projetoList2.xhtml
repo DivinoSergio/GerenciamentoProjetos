@@ -7,11 +7,13 @@
 
 <ui:composition template="/pages/template/template.xhtml">
 	<ui:define name="body">
-			
+	
+	<p:growl id="messages" showDetail="true" />		
 	<h:form id="formList">
-		<p:commandButton value="Novo Cadastro" action="projetoSave?faces-redirect=true" styleClass="ui-button-raised ui-button-success" />
+		<p:commandButton value="Novo Cadastro" action="projetoSave?faces-redirect=true" 
+			styleClass="ui-button-raised ui-button-success" />
 
-		<p:dataTable id="tableList" value="#{projetoController1.todosProjetos}" var="dataTableItem" rowIndexVar="rowIndex"
+		<p:dataTable id="tableList" value="#{projetoController.todosProjetos}" var="dataTableItem" rowIndexVar="rowIndex"
 			rows="5" paginator="true" paginatorPosition="bottom" >
 
 			<p:column headerText="ID">
@@ -24,30 +26,28 @@
 				<h:outputText value="#{dataTableItem.descricao}" />
 			</p:column>
 			<p:column headerText="Data Inicio">
-				<h:outputText value="#{dataTableItem.dataInicio}" />
+				<h:outputText value="#{dataTableItem.dataInicio}" >
+					<f:convertDateTime pattern="dd/MM/yyyy" />
+				</h:outputText>
 			</p:column>
+			
 			<p:column headerText="Ação">
-				<p:commandButton action="#{projetoController1.loadProjetoById(dataTableItem.id)}"
-					icon="pi pi-check" styleClass="rounded-button ui-button-flat" update="formList"/>
-					
-				<p:commandButton action="#{projetoController1.loadProjetoById(projeto.id)}"
-					icon="pi pi-pencil" tyleClass="edit-button rounded-button ui-button-success" update="formList"/>
+				<p:commandButton action="#{projetoController.editarProjeto}"
+						icon="pi pi-pencil" styleClass="rounded-button ui-button-flat" update="formList">
+					<f:setPropertyActionListener value="#{dataTableItem}" target="#{projetoController.projetoId}" />
+                </p:commandButton>
 				
 				<p:commandButton class="ui-button-warning rounded-button" icon="pi pi-trash"
 					process="@this" oncomplete="PF('confirmDialogId').show()">
-					<f:setPropertyActionListener value="#{projeto}" target="#{projetoController1.projeto1}" />
+					<f:setPropertyActionListener value="#{dataTableItem}" target="#{projetoController.projeto1}" />
                 </p:commandButton>
-                
 			</p:column>
 		</p:dataTable>
 		
-	</h:form>
-
-	<h:form id="dialogs">
-		<p:confirmDialog widgetVar="confirmDialogId" showEffect="fade" header="Excluir Projeto" severity="warn" 
+		<p:confirmDialog widgetVar="confirmDialogId" showEffect="fade" header="Excluir Projeto?" severity="warn" 
 					message="Gostaria de excluir este registro de Projeto?">
 					
-	        <p:commandButton value="Sim" actionListener="#{projetoController1.removeProjetoById}" 
+	        <p:commandButton value="Sim" actionListener="#{projetoController.deleteProjeto}" 
 	        	process="@this" update=":formList" oncomplete="PF('confirmDialogId').hide()"/>
 	        	
 	        <p:commandButton value="Não" onclick="PF('confirmDialogId').hide();" type="button"

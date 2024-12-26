@@ -5,26 +5,27 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 		
-<h:head>
-</h:head>
-
-<body>
-
-	<table>
-		<tr>
-			<td colspan="2">
-				<ui:include src="/pages/template/header.xhtml" />
-			</td>
-		</tr>
-		<tr>
-			<td width="200" valign="top">
-				<ui:include src="/pages/template/menu.xhtml" />
-			</td>
-			<td>
-				<ui:insert name="body" />
-			</td>
-		</tr>
-	</table>
-
-</body>
+	<h:head>
+		<link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/favicon.ico"/>
+	</h:head>
+	
+	<body>
+	
+		<table>
+			<tr>
+				<td colspan="2">
+					<ui:include src="/pages/template/header.xhtml" />
+				</td>
+			</tr>
+			<tr>
+				<td width="200" valign="top">
+					<ui:include src="/pages/template/menu.xhtml" />
+				</td>
+				<td>
+					<ui:insert name="body" />
+				</td>
+			</tr>
+		</table>
+	
+	</body>
 </html>

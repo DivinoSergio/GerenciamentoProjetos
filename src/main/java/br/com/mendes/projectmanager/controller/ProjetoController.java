@@ -2,6 +2,8 @@ package br.com.mendes.projectmanager.controller;
 
 import java.util.List;
 
+import org.primefaces.PrimeFaces;
+
 import br.com.mendes.projectmanager.model.Projeto;
 import br.com.mendes.projectmanager.service.ProjetoService;
 import jakarta.enterprise.context.RequestScoped;
@@ -49,6 +51,14 @@ public class ProjetoController {
         return "projetoEdit.xhtml?faces-redirect=true&id=" + projetoId.getId();
     }
 
+    public void deleteProjeto() {
+        this.projetoService.deletarProjeto(this.projetoId.getId());
+        this.todosProjetos.remove(this.projetoId);
+        this.projetoId = null;
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Projeto removido."));
+        PrimeFaces.current().ajax().update("formList:messages", "formList");
+    }
+    
     public void removeProjetoById(int id) {
     	System.out.println("Valor " + id);
     	
