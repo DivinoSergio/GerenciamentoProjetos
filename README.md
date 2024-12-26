@@ -6,7 +6,7 @@
       * [Persistência](#persistência)
       * [UI Interface do usuário](#ui-interface-do-usuário)
       * [Servidor de aplicativos (contêiner de servlet, na verdade)](#servidor-de-aplicacao--servlet-container-)
-      * [Ferramenta de gerenciamento e construção de dependências](#ferramenta-de-gerenciamento-e-construcao-de-dependencias)
+      * [Ferramenta de gerenciamento e construção de dependências](#ferramenta-de-gerenciamento-e-construcao-de-dependências)
       * [IDE](#ide)
    * [Objetivo](#objetivo)
    * [Banco de dados MySQL](#banco-de-dados-mysql)
@@ -51,6 +51,7 @@ Veja META-INF o arqivo "**persistence.xml**" as configurações da base de dados
 
 Criar o banco de dados: 
     *CREATE DATABASE `gerenciamentoprojetos`;*
+    
 **Obs.:** Ao executar o projeto pela rimeira vez as tabelas serão criadas via *Hibernate*.
 
 ## Como executar este projeto
