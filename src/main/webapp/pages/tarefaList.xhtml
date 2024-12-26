@@ -1,10 +1,8 @@
-<?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="jakarta.faces.facelets"
+    xmlns:f="jakarta.faces.core"
+    xmlns:h="jakarta.faces.html"
 	xmlns:p="http://primefaces.org/ui">
 	
 <ui:composition template="/pages/template/template.xhtml">
@@ -17,11 +15,11 @@
 			<p:commandButton value="Nova Tarefa" action="tarefaSave?faces-redirect=true"
 				styleClass="ui-button-raised ui-button-success" icon="pi pi-chart-bar"/>
 	
-			<p:dataTable id="tableList" value="#{tarefaController.todosTarefas}" var="dataTableItem" rowIndexVar="rowIndex"
-				rows="5" paginator="true" paginatorPosition="bottom" sortBy="#{dataTableItem.projeto.titulo}">
-	
+			<p:dataTable id="tableTarefas" value="#{tarefasController.todosTarefas}" var="dataTableItem" 
+				rowKey="#{dataTableItem.id}" rows="5" paginator="true" paginatorPosition="bottom" sortBy="#{dataTableItem.projeto.titulo}">
+				
 				<p:headerRow field="projeto.titulo" expandable="true" styleClass="custom-header">
-	                <p:column colspan="6">
+	                <p:column colspan="7">
 	                    <div class="inline-flex align-items-center" style="vertical-align: middle">
 	                        <h:outputText styleClass="ml-2" value="Projeto: #{dataTableItem.projeto.id} - #{dataTableItem.projeto.titulo}"/>
 	                    </div>
@@ -50,10 +48,12 @@
 				</p:column>
 				
 				<p:column headerText="Ação">
-					<p:commandButton action="#{tarefaController.loadTarefaById(dataTableItem.id)}"
-						icon="pi pi-pencil" styleClass="rounded-button ui-button-flat" update="formList"/>
+					<p:commandButton action="#{tarefasController.editarTarefa}"
+						icon="pi pi-pencil" styleClass="rounded-button ui-button-flat" update="formList">
+						<f:setPropertyActionListener value="#{dataTableItem}" target="#{tarefasController.tarefaId}" />
+	                </p:commandButton>
 						
-					<p:commandButton action="#{tarefaController.removeTarefaById(dataTableItem.id)}"
+					<p:commandButton action="#{tarefasController.removeTarefaById(dataTableItem.id)}"
 						icon="pi pi-trash" styleClass="rounded-button ui-button-danger ui-button-flat" update="formList"/>
 						
 				</p:column>

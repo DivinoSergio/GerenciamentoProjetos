@@ -1,8 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:ui="jakarta.faces.facelets"
+    xmlns:f="jakarta.faces.core"
+    xmlns:h="jakarta.faces.html"
 	xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="/pages/template/template.xhtml">
@@ -16,9 +16,8 @@
 			<p:commandButton value="Nova Projeto" action="projetoSave?faces-redirect=true" 
 				styleClass="ui-button-raised ui-button-success" icon="pi pi-sitemap"/>
 
-			<p:dataTable id="tableList" value="#{projetoController1.todosProjetos}" var="dataTableItem" 
-				rowKey="#{dataTableItem.id}" rows="5" paginator="true" paginatorPosition="bottom" 
-				selection="#{projetoController1.projetoId}" selectionMode="single">
+			<p:dataTable id="tableList" value="#{projetoController.todosProjetos}" var="dataTableItem" 
+				rowKey="#{dataTableItem.id}" rows="5" paginator="true" paginatorPosition="bottom" selectionMode="single">
 	
 				<p:column headerText="ID">
 					<h:outputText value="#{dataTableItem.id}" />
@@ -34,13 +33,14 @@
 						<f:convertDateTime pattern="dd/MM/yyyy" />
 					</h:outputText>
 				</p:column>
+				
 				<p:column headerText="Ação">
-					<p:commandButton action="#{projetoController1.editarProjeto}"
+					<p:commandButton action="#{projetoController.editarProjeto}"
 						icon="pi pi-pencil" styleClass="rounded-button ui-button-flat" update="formList">
-					<f:setPropertyActionListener value="#{dataTableItem}" target="#{projetoController1.projetoId}" />
-                </p:commandButton>
+						<f:setPropertyActionListener value="#{dataTableItem}" target="#{projetoController.projetoId}" />
+	                </p:commandButton>
 						
-					<p:commandButton action="#{projetoController1.removeProjetoById(dataTableItem.id)}"
+					<p:commandButton action="#{projetoController.removeProjetoById(dataTableItem.id)}"
 						icon="pi pi-trash" styleClass="rounded-button ui-button-danger ui-button-flat" update="formList growl"/>
 					
 				</p:column>
