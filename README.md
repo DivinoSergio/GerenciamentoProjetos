@@ -26,13 +26,13 @@ Este projeto é uma aplicação web CRUD simples com design responsivo, usando J
 
 ### UI Interface do usuário
 * JSF 2.3.x
-* Primefaces 11.x
+* Primefaces 12.x
 * <b>Porque não usou Richfaces?</b><br/>
 	RichFaces, desde 2016, foi descontinuado pela Red Hat, o que significa que não há mais suporte oficial.<br/>
 	Tornando o projeto custoso de se configurar junto as novas tecnologias.
 
 ### Servidor de Aplicação (Servlet Container)
-* Tomcat 8.5.x
+* Tomcat 10.1.x
 
 ### Dependency Management and Build Tool
 * Maven 3.0
@@ -54,14 +54,10 @@ Criar o banco de dados:
 **Obs.:** Ao executar o projeto pela rimeira vez as tabelas serão criadas via *Hibernate*.
 
 ## Como executar este projeto
-1. Download **Apache Tomcat 8.5.x** from https://tomcat.apache.org/download-80.cgi ([Windows](https://archive.apache.org/dist/tomcat/tomcat-8/v8.5.28/bin/apache-tomcat-8.5.28.zip) ou [Linux](https://archive.apache.org/dist/tomcat/tomcat-8/v8.5.28/bin/apache-tomcat-8.5.28.tar.gz)) e extraia para qualquer pasta do seu computador.
+1. Download **Apache Tomcat 8.5.x** from https://tomcat.apache.org/download-10.cgi ([Windows](https://archive.apache.org/dist/tomcat/tomcat-10/v10.1.34/bin/apache-tomcat-10.1.34-windows-x64.zip) ou [Linux](https://archive.apache.org/dist/tomcat/tomcat-10/v10.1.34/bin/apache-tomcat-10.1.34.tar.gz)) e extraia para qualquer pasta do seu computador.
 2. Open **IDE Eclipse**, vá para "**Preferences**", selecionar o nó "**Server**" e selecionar "**Runtime Environments**". Clicar em **Add...** escolha a pasta onde você extraiu o Tomcat no passo 1 acima. Clique em "**Apply and Close**".
-3. Na aba "**Server**", cliar botão direito, seleione o item "**New**", clicar em  **Server**. Na janela selecione o item "**Apache**"", selecione o erção de Tomcat (tomcat-8.5.28).
+3. Na aba "**Server**", cliar botão direito, seleione o item "**New**", clicar em  **Server**. Na janela selecione o item "**Apache**"", selecione o versão de Tomcat (tomcat-10.1.34).
 4. Clone o projeto na sua maquina e importe o ("**File**" / "**Import...**")
 5. No Eclipse, com botão direito do mouse selecione "**Properties**". Escolha "**Java Build Path**", selecione a aba "**Libraries**", em "**JRE System...**", adicionar o "**JavaSE-1.7**".
 6. Na aba "**Server**"" do Eclipse, no servidor Tomcat, adicione o projeto e em seguida clicar em "**Debug / Start**".
 7. No browser "**[http://localhost:8080/GerenciamentoProjetos/](http://localhost:8080/GerenciamentoProjetos/)**". 
-
-## Observação
-### Porque não usou Richfades?
-* Porquê?
