@@ -13,7 +13,7 @@
    * [Como executar este projeto](#como-executar-este-projeto)
 
 # Aplicativo web CRUD com design responsivo
-Este projeto é uma aplicação web CRUD simples com design responsivo, usando Java, Spring Framework, JPA, JSF, PrimeFaces e outras tecnologias.
+Este projeto é uma aplicação web CRUD simples com design responsivo, usando Java, JPA, JSF, PrimeFaces e outras tecnologias.
 
 ## Frameworks e ferramentas usadas
 ### Linguagem
