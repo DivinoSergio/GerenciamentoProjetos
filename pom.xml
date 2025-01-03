@@ -6,7 +6,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>br.com.mendes</groupId>
-	<artifactId>GerenciamentoProjetos-Prime</artifactId>
+	<artifactId>GerenciamentoProjetos</artifactId>
   	<version>0.0.1-SNAPSHOT</version>
   	<packaging>war</packaging>
 
@@ -85,7 +85,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>GerenciamentoProjetos-Prime</finalName>
+		<finalName>GerenciamentoProjetos</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
