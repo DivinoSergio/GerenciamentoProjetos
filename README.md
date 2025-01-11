@@ -1,16 +1,16 @@
 Índice de Conteúdo
 ==================
-   * [Aplicativo web CRUD com design responsivo](#aplicativo-web-crud-com-design-responsivo)
-      * [Frameworks e ferramentas usadas](#frameworks-e-ferramentas-usadas)
-      * [Linguagem](#linguagem)
-      * [Persistência](#persistência)
-      * [UI Interface do usuário](#ui-interface-do-usuário)
-      * [Servidor de aplicativos (contêiner de servlet, na verdade)](#servidor-de-aplicacao--servlet-container-)
-      * [Ferramenta de gerenciamento e construção de dependências](#ferramenta-de-gerenciamento-e-construcao-de-dependências)
-      * [IDE](#ide)
-   * [Objetivo](#objetivo)
-   * [Banco de dados MySQL](#banco-de-dados-mysql)
-   * [Como executar este projeto](#como-executar-este-projeto)
+* [Aplicativo web CRUD com design responsivo](#aplicativo-web-crud-com-design-responsivo)
+* [Frameworks e ferramentas usadas](#frameworks-e-ferramentas-usadas)
+    * [Linguagem](#linguagem)
+    * [Persistência](#Persistência)
+    * [UI Interface do usuário](#ui-interface-do-usuário)
+    * [Servidor de Aplicação (Servlet Container)](#Servidor-de-Aplicação--Servlet-Container-)
+    * [Ferramenta de gerenciamento e construção de dependências](#ferramenta-de-gerenciamento-e-construcao-de-dependências)
+    * [IDE](#ide)
+* [Objetivo](#objetivo)
+* [Banco de dados MySQL](#banco-de-dados-mysql)
+* [Como executar este projeto](#como-executar-este-projeto)
 
 # Aplicativo web CRUD com design responsivo
 Este projeto é uma aplicação web CRUD simples com design responsivo, usando Java, JPA, JSF, PrimeFaces e outras tecnologias.
@@ -34,7 +34,7 @@ Este projeto é uma aplicação web CRUD simples com design responsivo, usando J
 ### Servidor de Aplicação (Servlet Container)
 * Tomcat 10.1.x
 
-### Dependency Management and Build Tool
+### Ferramenta de gerenciamento e construção de dependências
 * Maven 3.0
 
 ### IDE
@@ -75,3 +75,7 @@ Criar o banco de dados:
 	<img loading="lazy" src="https://img.shields.io/badge/MySQL-v8.0.1-blue?logo=mysql"/>
 	<img loading="lazy" src="https://img.shields.io/badge/Primefaces-v12.0-blue?logo=primefaces"/>
 </p>
+
+### Referências de apoio.
+	https://simpleicons.org/
+	https://shields.io/
