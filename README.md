@@ -62,3 +62,16 @@ Criar o banco de dados:
 5. No Eclipse, com botão direito do mouse selecione "**Properties**". Escolha "**Java Build Path**", selecione a aba "**Libraries**", em "**JRE System...**", adicionar o "**JavaSE-1.7**".
 6. Na aba "**Server**"" do Eclipse, no servidor Tomcat, adicione o projeto e em seguida clicar em "**Debug / Start**".
 7. No browser "**[http://localhost:8080/GerenciamentoProjetos/](http://localhost:8080/GerenciamentoProjetos/)**". 
+
+
+### Requisitos
+
+<p align="center">
+	<img loading="lazy" src="https://img.shields.io/badge/Eclipse-v2023--06-blue?logo=eclipse"/>
+	<img loading="lazy" src="https://img.shields.io/badge/Tomcat-v10.0.34-blue?logo=apachetomcat"/>
+	<img loading="lazy" src="https://img.shields.io/badge/Java-v17-blue?logo=openjdk"/>
+	<img loading="lazy" src="https://img.shields.io/badge/Git-v2.43.0-blue?logo=git"/>
+	<img loading="lazy" src="https://img.shields.io/badge/Maven-v3.0.1-blue?logo=apachemaven"/>
+	<img loading="lazy" src="https://img.shields.io/badge/MySQL-v8.0.1-blue?logo=mysql"/>
+	<img loading="lazy" src="https://img.shields.io/badge/Primefaces-v12.0-blue?logo=primefaces"/>
+</p>
