@@ -82,6 +82,6 @@ Criar o banco de dados:
 
 <div>
   <a href="https://github.com/DivinoSergio">
-  <img height="180em" src="https://github-readme-stats.vercel.app/api?username=DivinoSergio&show_icons=true&theme=radical&include_all_commits=true&count_private=true"/>
-  <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=DivinoSergio&layout=compact&langs_count=7&theme=radical"/>
+  <img height="180em" src="https://github-readme-stats.vercel.app/api?username=DivinoSergio&show_icons=true&theme=highcontrast&include_all_commits=true&count_private=true"/>
+  <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=DivinoSergio&layout=compact&langs_count=7&theme=highcontrast"/>
 </div>
